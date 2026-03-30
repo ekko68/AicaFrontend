@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Welcome to MagicLine4Web Page</title>
+    <link href="./css/global.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="./images/favicon.ico"	type="image/x-icon" /> -->
+    <!-- 외부 JS -->
+    <script type="text/javascript" src="/MagicLine4Web/ML4Web/js/ext/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="/MagicLine4Web/ML4Web/js/ext/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/MagicLine4Web/ML4Web/js/ext/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="/MagicLine4Web/ML4Web/js/ext/json2.js"></script>
+    <!-- ML4WEB JS -->
+    <script type="text/javascript" src="/MagicLine4Web/ML4Web/js/ext/ML_Config.js"></script>
+</head>
+
+<body>
+    <table id="main-table" border="0" cellspacing="0">
+        <tr>
+            <td id="header" colspan="2">
+                <div id="header-div">
+                    <div class="right-logo">MagicLine4Web Console</div>
+                    <div class="left-logo"><a href="index.jsp" class="header-home">
+                            <img src="./images/1px.gif" width="300px" height="32px" /></a>
+                    </div>
+                    <div class="middle-ad"></div>
+                    <div class="header-links">
+                        <div class="right-links">
+                            <ul>
+                                <li class="middle"><label id="logged-user"> <strong>Signed-in
+                                            as:</strong>&nbsp;admin@ </label></li>
+                                <li class="middle">|</li>
+                                <li class="right"><a href="./document/MagicLine V4.0_Install_Guide.pdf">Install Docs
+                                    </a></li>
+                                <li class="middle">|</li>
+                                <li class="right"><a href="./document/MagicLineV4.0_Function_Guide.pdf">Function Docs
+                                    </a></li>
+                                <li class="middle">|</li>
+                                <li class="middle"><a target="_blank"
+                                        href="./document/MagicLineServerV4.2/index.html">MagicLine Java Docs</a></li>
+                                <li class="middle">|</li>
+                                <li class="middle"><a target="_blank" href="./document/Jcaos_docs/index.html">Jcaos Java
+                                        Docs</a></li>
+                                <li class="middle">|</li>
+                                <li class="left"><a target="_blank" href="http://www.dreamsecurity.com">About</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td id="menu-panel" valign="top">
+                <table id="menu-table" style="border:0;border-spacing:0;">
+                    <tr>
+                        <td id="magicline">
+                            <div id="menu">
+                                <ul class="main">
+                                    <li id="magicline_v40_menu" class="menu-header"
+                                        onclick="mainMenuCollapse(this.childNodes[0])" style="cursor: pointer"><img
+                                            src="./images/up-arrow.gif" class="mMenuHeaders"
+                                            id="magicline_v40_menu" />[Samples]MagicLine4Web
+                                    </li>
+                                    <!-- <li class="normal">
+                                    <ul class="sub">
+                                        <li class="menu-disabled-link" style="background-image: url(../mediation/images/mediation-icon.gif);">로그인</li>
+                                        <li><a href="../ML4WebExample/login_renew.jsp" class="menu-default" style="background-image: url(../sequences/images/sequences.gif);">인증서 로그인</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-disabled-link" style="background-image: url(../mediation/images/mediation-icon.gif);">세션키 암호화 (로그인 후 사용)</li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/sessionEncrypt.jsp" class="menu-default" style="background-image: url(../sequences/images/sequences.gif);">세션키 클라이언트 암호화</a></li>
+                                        <li><a href="../ML4WebExample/sessionEncryptKeyExchange.jsp" class="menu-default" style="background-image: url(../sequences/images/sequences.gif);">세션키 Exchange</a></li>
+                                        <li><a href="../ML4WebExample/sessionSvrEncrypt.jsp" class="menu-default" style="background-image: url(../sequences/images/sequences.gif);">세션키 서버 암호화</a></li>
+                                        <li><a href="../ML4WebExample/sessionEncryptKeyExchangeAjax.jsp" class="menu-default" style="background-image: url(../sequences/images/sequences.gif);">AJAX 암호화</a></li>
+                                    </ul>
+                                </li> -->
+                                    <li class="menu-disabled-link">전자서명</li>
+                                    <li class="normal">
+                                        <ul class="sub">
+                                            <li><a href="./signedForm.html" class="menu-default">Form 전자서명
+                                                </a></li>
+                                            <li><a href="./signedAjax.html" class="menu-default">Ajax 전자서명
+                                                </a></li>
+                                            <!-- <li><a href="../ML4WebExample/addSignedForm.jsp" class="menu-default">AddSign </a></li>
+                                        <li><a href="../ML4WebExample/signedFormXML_single.jsp" class="menu-default">Form XML 전자서명(단건)</a></li>
+                                        <li><a href="../ML4WebExample/signedFormXML_multi.jsp" class="menu-default">Form XML 전자서명(다건)</a></li> -->
+
+                                            <!-- 	<li><a href="../ML4WebExample/signEncrypt.jsp" class="menu-default" style="background-image: url(../endpoints/images/endpoints-icon.gif);">전자서명 & 암호화</a></li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="menu-disabled-link">본인확인 & 전자서명</li>
+                                    <li class="normal">
+                                        <ul class="sub">
+                                            <li><a href="./vidClientIDN.html" class="menu-default">서버에서 검증
+                                                    - IDN 입력 </a></li>
+                                            <!-- <li><a href="../ML4WebExample/vidServerIDN.jsp" class="menu-default">서버에서 검증 - 서버 IDN 이용  </a></li> -->
+                                        </ul>
+                                    </li>
+                                    <!-- <li class="menu-disabled-link">구간 암복호화</li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/e2eForm.jsp" class="menu-default">Form 암호화 전송</a></li>
+                                        <li><a href="../ML4WebExample/e2eAjax.jsp" class="menu-default">Ajax 암호화 전송 </a></li>
+                                    </ul>
+                                </li> -->
+                                    <!-- <li class="menu-disabled-link"><span id="wholeMgmt" style="cursor:pointer;" onClick="javscript:magicline.uiapi.getCertManager();">인증서 관리 </span></li>
+                                <li class="menu-disabled-link">인증서이동 클라이언트 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="javascript:CertMoveStart();" class="menu-default">인증서이동 클라이언트 실행</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-disabled-link">모바일 샘플 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebSample/login.jsp?pageID=list" class="menu-default">모바일 샘플 이동</a></li>
+                                    </ul>
+                                </li> -->
+                                    <!-- 
+                                <li class="menu-disabled-link">피노텍 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/finotek_test/signedFormAndSig.jsp" class="menu-default">sig data 생성 / 검증</a></li>
+                                        <li><a href="../ML4WebExample/finotek_test/addSignFormAndSig.jsp" class="menu-default">다중전자서명 sigData</a></li>
+                                        <li><a href="../ML4WebExample/finotek_test/multipleSignedFormAndSig.jsp" class="menu-default">pdf & sig 전자서명 </a></li>
+                                        <li><a href="../ML4WebExample/finotek_test/e2eServerEncrypt.jsp" class="menu-default">e2e 서버 암호화</a></li>
+                                        <li><a href="../ML4WebExample/finotek_test/vidCheck.jsp" class="menu-default">본인확인</a></li>
+                                    </ul>
+                                </li>
+                                 -->
+                                    <!-- <li class="menu-disabled-link">국세청 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/nts_api.jsp" class="menu-default">국세청 테스트페이지</a></li>
+                                    </ul>
+                                </li> -->
+                                    <!-- 
+                                <li class="menu-disabled-link">NP -> 4Web 전환 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/NPto4Web_example.jsp" class="menu-default">샘플페이지</a></li>
+                                    </ul>
+                                </li>
+                                 -->
+                                    <!-- <li class="menu-disabled-link">E2E 적용샘플 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/signedAjaxWithE2E.jsp" class="menu-default">Ajax 전자서명</a></li>
+                                    </ul>
+                                </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/signedFormWithE2E.jsp" class="menu-default">Form 전자서명</a></li>
+                                    </ul>
+                                </li> -->
+                                    <!-- <li class="menu-disabled-link" style="background-image: url(../mediation/images/mediation-icon.gif);">전자봉투</li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/envelope.jsp" class="menu-default" style="background-image: url(../endpoints/images/endpoints-icon.gif);">전자봉투 </a></li>
+                                        <li><a href="../ML4WebExample/envelopeSigned.jsp" class="menu-default" style="background-image: url(../endpoints/images/endpoints-icon.gif);">전자봉투 & 전자서명</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-disabled-link" style="background-image: url(../mediation/images/mediation-icon.gif);">유틸리티</li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/URIEncode.jsp" class="menu-default" style="background-image: url(../endpoints/images/endpoints-icon.gif);">EncodeURI</a></li>
+                                    </ul>
+                                </li> -->
+                                    <li class="menu-disabled-link">인증서 저장</li>
+                                    <li class="normal">
+                                        <ul class="sub">
+                                            <li><a href="./saveCert.html" class="menu-default">인증서 저장 </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!-- <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/certmove/login.jsp" class="menu-default">모바일 샘플 페이지 </a></li>
+                                    </ul>
+                                </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="#" class="menu-default">클라이언트 실행 </a></li>
+                                    </ul>
+                                </li> -->
+
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="./images/1px.gif" width="225px" height="1px" /></td>
+                    </tr>
+                </table>
+            </td>
+            <td id="middle-content">
+                <table id="content-table" style="border:0;border-spacing:0;">
+                    <tr>
+                        <td id="page-header-links">
+                            <table class="page-header-links-table" style="border-spacing:0;">
+                                <tr>
+                                    <td class="breadcrumbs">
+                                        <table class="breadcrumb-table" style="border-spacing:0;">
+                                            <tr>
+                                                <td>
+                                                    <div id="breadcrumb-div"></div>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+
+                                    <td class="page-header-help"><a href="./docs/userguide.html" target="_blank"></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="body"><img src="./images/1px.gif" width="735px" height="1px" />
+                            <div>
+                                <button onClick="ML_goBug();" style="width:300px;height:50px;">버그리포팅으로
+                                    이동</button><br /><br /><br /><br />
+
+                                <h3>[ 2016-07-18 10:30 ]</h3>
+                                * Version : 클라이언트 : win = 1.0.1.0, mac = 1.0.1.0<br />
+                                1. [bugfix]<br />
+                                - 보안토큰 인증서 복사 오류 수정<br />
+
+                                2. [기능추가]<br />
+                                - 인증서 찾기 안드로이드 기기 추가<br />
+                                - 인증서 필터링 기능 추가<br />
+                                - cs update html 추가<br />
+                                - libType(CRYPT)이 C 인 경우 CS 실행 기능 추가<br />
+
+                                3. [기능변경]<br />
+                                - 관리메뉴 인증서 복사시 암호 체크 기능 적용<br />
+
+                                <br /><br />
+
+                                <h3>[ 2016-07-12 10:30 ]</h3>
+                                * Version : 클라이언트 : win = 1.0.1.0, mac = 1.0.1.0<br />
+                                1. [bugfix]<br />
+                                - 다이얼로그 z-index조정<br />
+                                - alert 다이얼로그 포커스 처리<br />
+
+                                2. [기능추가]<br />
+                                - pfx 모바일 인증 기능 추가<br />
+                                - cs 설치 download type 및 모바일 기기 예외 처리 추가<br />
+                                - 인증서 목록 필터 적용 개발중<br />
+                                - js minify 버전 적용<br />
+
+                                3. [기능변경]<br />
+                                - 사이트 Domain 변수화<br />
+                                - 사이트 언어 ko로 픽스 적용<br />
+                                - pfx import 창 탭이벤트 포커스 처리<br />
+
+                                <br /><br />
+
+                                <h3>[ 2016-07-07 10:30 ]</h3>
+                                * Version : 클라이언트 : win = 1.0.1.0, mac = 1.0.1.0<br />
+                                1. [bugfix]<br />
+                                - 인증서 재서명창 호출 오류 수정<br />
+
+                                2. [기능추가]<br />
+                                - cs 설치 관련 기능 추가<br />
+
+                                3. [기능변경]<br />
+                                - 로컬스토리지 인증서 백업 MLCert 사용여부를 config 옵션 처리.<br />
+
+                                <br /><br />
+
+                                <h3>[ 2016-07-05 10:30 ]</h3>
+                                * Version : 클라이언트 : win = 1.0.1.0, mac = 1.0.1.0<br />
+                                1. [bugfix]<br />
+                                - MLjquiWindow 다이얼로그 창 z-index 조정<br />
+                                - 오류 메세지 표시 오류 버그 패치<br />
+                                - ie8 디자인 패치 적용<br />
+
+                                2. [기능추가]<br />
+                                - 스마트인증 연동 스크립트 추가<br />
+                                - 초기화 시점 조절. 외부 Alert Dialog 기능 개발<br />
+
+                                3. [기능변경]<br />
+                                - 초기화 완료 체크 로직 변경<br />
+
+                                <br /><br />
+
+                                <h3>[ 2016-07-04 10:30 ]</h3>
+                                * Version : 클라이언트 : win = 1.0.1.0, mac = 1.0.1.0<br />
+                                1. [bugfix]<br />
+                                - 클라이언트 종료시 메시지가 깨지는 현상 수정<br />
+                                - IE8 적용 패치. 스크립트 오류 수정<br />
+                                - 오류 코드 문구 추가 & 정리<br />
+                                - localStorage DreamWebCert Sync 기능 개발로 인한 <br />
+                                Side Effect. Storage Api DeleteCert, SaveCert 기능 버그패치<br />
+
+                                2. [기능추가]<br />
+                                - CS Install popup open 모듈 추가<br />
+                                - mlcert.dreamsecurity.com iframe 적용<br />
+                                - localStorage DreamWebCert Sync 기능 개발<br />
+
+                                3. [기능변경]<br />
+                                - 없음<br />
+
+                                <br /><br />
+
+                                <h3>[ 2016-06-30 10:30 ]</h3>
+                                * Version : 클라이언트 : win = 1.0.0.31, mac = 1.0.1.0<br />
+                                1. [bugfix]<br />
+                                - 공백삭제, 한글 메세지 처리, 콜백정리<br />
+
+                                2. [기능추가]<br />
+                                - PFX 인증서 가져오기 웹스토리지 인증서 저장 여부 선택 기능 추가<br />
+                                - Loading 완료 체크 변수 적용<br />
+                                - mac용 cs 파일 추가<br />
+
+                                3. [기능변경]<br />
+                                - design js plugin concat & minify<br />
+
+                                <br /><br />
+
+                                <h3>[ 2016-06-28 10:30 ]</h3>
+                                * Version : 클라이언트 : win = 1.0.0.31<br />
+                                1. [bugfix]<br />
+                                - 없음<br />
+
+                                2. [기능추가]<br />
+                                - Loading 완료 체크 변수 적용<br />
+                                - 멀티 OS 테스트 환경 적용<br />
+
+                                3. [기능변경]<br />
+                                - 도메인 설정 방법 변경.(Config 으로 1원화)<br />
+                                - 스마트 공인인증 Web 취소 메시지 처리 부분 삭제<br />
+                                - SSL 공인인증서 적용 및 도메인 변경<br />
+                                - SSL 공인인증서 포트 변경으로 인한 포트 체크 로직 수정<br />
+                                - 테스트 코드 삭제<br />
+
+                                <br /><br />
+
+                                <h3>[ 2016-06-26 10:00 ]</h3>
+                                * Version : 클라이언트 : win = 1.0.0.31<br />
+                                1. [bugfix]<br />
+                                - ie8 지원을 위한 버그패치<br />
+
+                                2. [기능추가]<br />
+                                - 버그리포팅 메뉴 추가<br />
+                                - 스마트인증 모바일 추가<br />
+                                - 스마트인증 Web 처리 모듈 추가<br />
+                                - 클라이언트 업데이트 c crypto filepicker 기능 추가<br />
+                                - C crypto 에서만 사용되는, PFX 파일 선택하기위한 getFilePicker() 함수 추가<br />
+                                - input 창 enterKey 이벤트 처리 적용<br />
+
+                                3. [기능변경]<br />
+                                - pfx savecert 함수 기능 패치 - realname 부재 인증서에 대한 처리<br />
+                                - 메인다이얼로그창 Full Screen Iframe 적용<br />
+
+                                <br /><br />
+
+                                <h3>[ 2016-06-22 09:30 ]</h3>
+                                * Version : 클라이언트 : win = 1.0.0.31<br />
+                                1. [bugfix]<br />
+                                - cs 설치 문구 수정<br />
+
+                                2. [기능추가]<br />
+                                - 인증서 가져오기 팝업 추가<br />
+                                - 인증서 삭제 팝업 추가<br />
+                                - 로컬서버 설치 모듈 추가<br />
+                                - 로컬서버 인스톨 모듈 개발<br />
+
+                                3. [기능변경]<br />
+                                - 패스워드 유효성 검사 수정<br />
+                                - 패키징 구조 변경<br />
+
+                                <br /><br />
+
+                                <h3>[ 2016-06-21 09:30 ]</h3>
+                                * Version : 클라이언트 : win = 1.0.0.31<br />
+                                * 최초릴리즈 <br />
+
+                                <br /><br /><br /><br /><br />
+
+                            </div>
+                            <!-- <script type="text/javascript" src="../js/MagicLine.js?v=20150803"></script> -->
+                            <!-- DIV END  -->
+                            <script type="text/javascript">
+                                //window.open("./popup.html","MagicLine4NP", "width=500,height=400,resizable=no,toolbar=no,location=no,status=no" );
+                                /* setCookie('current-breadcrumb', 'magicline_v40_menu');
+                                document.onload=setBreadcrumDiv();
+                                function setBreadcrumDiv () {
+                                    var breadcrumbDiv = document.getElementById('breadcrumb-div');
+                                    breadcrumbDiv.innerHTML = '<table cellspacing="0"><tr><td class="breadcrumb-link"><a href="index.jsp">Home</a></td><td class="breadcrumb-link">&nbsp;>&nbsp;MagicLine4</td><td class="breadcrumb-link">&nbsp;>&nbsp;index</td>';
+                                }
+                                function goBug(){
+                                    window.open("https://docs.google.com/forms/d/1l8z2g7Xuj6Zjts2of_liadXvRwXPyCws_HRxrcOG8Bc/viewform?c=0&w=1","","width=500,height=1000")
+                                }*/
+                            </script>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td id="footer" colspan="2">
+                <div id="footer-div">
+                    <div class="footer-content">
+                        <div class="copyright">&copy; 2008 - 2011 DreamSecurity Inc. All Rights
+                            Reserved.</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div id="dscertContainer">
+        <iframe id="dscert" name="dscert" src="" scrolling="no" width="100%" height="100%" frameborder="0"
+            allowTransparency="true"
+            style="position:fixed;z-index:100010;top:0px;left:0px;width:100%;height:100%;"></iframe>
+    </div>
+</body>
+
+</html>

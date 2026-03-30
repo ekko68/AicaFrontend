@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+    <g data-name="그룹 5172">
+        <path data-name="선 21" style="stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3.5px;fill:none" d="M0 0h30.487" transform="translate(9 12)"/>
+        <path data-name="선 23" transform="translate(9 23.533)" style="stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3.5px;fill:none" d="M0 0h30.487"/>
+        <path data-name="선 25" transform="translate(9 35.067)" style="stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3.5px;fill:none" d="M0 0h30.487"/>
+    </g>
+    <path style="fill:none" d="M0 0h48v48H0z"/>
+</svg>

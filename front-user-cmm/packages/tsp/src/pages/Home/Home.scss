@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+/**
+ * 스크롤 시 z-index 1로 변함.
+ * home인 경우, z-index값 고정.
+ */
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+header {
+  z-index: 100 !important;
+}
+
+.home {
+  &__swiper-full {
+    footer {
+      .swiper {
+        &-pagination {
+          display: none;
+        }
+      }
+    }
+  }
+}

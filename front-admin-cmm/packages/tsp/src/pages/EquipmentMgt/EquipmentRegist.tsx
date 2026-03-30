@@ -1,0 +1,439 @@
+import React, {Fragment, useEffect, useRef, useState} from 'react'
+import {FormControl, Stack, Table, TableCell, TableContainer, TableRow, TextField} from "@mui/material";
+import {EquipmentCategoryService} from "~/service/EquipmentMgt/EquipmentCategoryService";
+import {
+  DiscountData,
+  EquipmentClassifyData,
+  EquipmentData,
+  EquipmentInformationData, EquipmentRegisterData
+} from "~/service/Model";
+import {HorizontalInterval, SimpleTextFiled, SubContents, TitleContents} from "shared/components/LayoutComponents";
+import {
+  CustomHeadCell,
+  WithCustomRowData,
+  TableComponents, TableDateCell, TableDateTermCell,
+  TableDoubleSelectCell,
+  TableTextFieldCell,
+  TableRadioCell,
+  TableSelectCell,
+  TableTextCell
+} from "shared/components/TableComponents";
+import {CheckboxStyle, CustomButton} from "shared/components/ButtonComponents";
+import {useNavigate} from "react-router-dom";
+import {EquipmentInformationService} from "~/service/EquipmentMgt/EquipmentInformationService";
+import {useEquipmentDetailStore} from "~/store/EquipmentMgt/EquipmentDetailStore";
+import {ModalComponents} from "shared/components/ModalComponents";
+import {checkValidity} from "shared/utils/validUtil";
+import {SaleRegisterModal} from "~/pages/EquipmentMgt/SaleRegisterModal";
+import {SaleSelectModal} from "~/pages/EquipmentMgt/SaleSelectModal";
+import {useGlobalModalStore} from "~/store/GlobalModalStore";
+
+/* 장비 등록 */
+const EquipmentRegist = () => {
+  const navigate = useNavigate();
+  const [selectedImage, setSelectedImage] = useState<any>();
+  const imgRef = useRef<HTMLInputElement>(null);
+  const [req, setReq] = useState<EquipmentRegisterData | null>(null)
+
+  const {addModal} = useGlobalModalStore()
+  const [isSaleRegister, setIsSaleRegister] = useState(false)
+  const [isSaleSelect, setIsSaleSelect] = useState(false)
+  const [disCountRowList, setDiscountRowList] = useState<WithCustomRowData<DiscountData>[]>([])
+  const [selectedDiscount, setSelectedDiscount] = useState<string[]>([]);
+
+  const {data} = EquipmentCategoryService.getRoot();
+  const [lastCategoryLabel, SetLastCategoryLabel] = React.useState<string[]>([])
+
+  const sort = (depth: number, dest: EquipmentClassifyData[], source: EquipmentClassifyData[]) => {
+    source.map(m => {
+      if (m.depth == depth && m.useAt) dest.push(m);
+    })
+  }
+  const findId = (dest: EquipmentClassifyData[], name: string) => {
+    return dest.filter(f => f.eqpmnClNm == name).flatMap(id => id.eqpmnClId)
+  }
+  const firstCategory: EquipmentClassifyData[] = [];
+  const lastCategory: EquipmentClassifyData[] = [];
+
+  if (data && data.list) {
+    sort(1, firstCategory, data.list)
+    sort(2, lastCategory, data.list)
+  }
+
+  const firstCategoryLabel: string[] = firstCategory.map((m) => {
+    return m.eqpmnClNm;
+  });
+
+  return <TitleContents title={"장비 등록"}>
+    <Stack spacing={"40px"} component={"form"} id={"EquipmentRegist"}>
+      <SubContents title={"기본정보"}>
+        <TableContainer style={{borderTop: "1px solid #d7dae6"}}>
+          <Table>
+            <TableRow>
+              <TableTextFieldCell
+                division label={"자산번호"} required
+                thWidth={"13%"} tdWidth={"21%"} onChange={(text) => {
+                setReq((state) => ({...req!, assetsNo: text}))
+              }
+              }
+              />
+              <TableTextFieldCell
+                division label={"장비명(국문)"} required
+                thWidth={"13%"} tdWidth={"21%"} onChange={(text) => {
+                setReq((state) => ({...req!, eqpmnNmKorean: text}))
+              }}
+              />
+              <TableTextFieldCell
+                label={"장비명(영문)"}
+                thWidth={"13%"} onChange={(text) => {
+                setReq((state) => ({...req!, eqpmnNmEngl: text}))
+              }}
+              />
+            </TableRow>
+            <TableRow>
+              <TableTextFieldCell
+                division label={"모델명"}
+                thWidth={"13%"} tdWidth={"21%"} onChange={(text) => {
+                setReq((state) => ({...req!, modelNm: text}))
+              }}
+              />
+              <TableDoubleSelectCell
+                division
+                label={'분류'} required
+                firstSelectLabel={firstCategoryLabel}
+                lastSelectLabel={lastCategoryLabel}
+                onFirstClick={(selected: string) => {
+                  const id = findId(firstCategory, selected)
+                  // setReq((state) => ({...req!, eqpmnClfcId: id.at(0)!.toString()}))
+
+                  firstCategory.find((f) => {
+                    if (f.eqpmnClNm == selected) {
+                      const eqpmnClfcNms: string[] = [];
+                      lastCategory.map((m) => {
+                        if (m.eqpmnLclasId == f.eqpmnClId) eqpmnClfcNms.push(m.eqpmnClNm)
+                      });
+                      SetLastCategoryLabel(eqpmnClfcNms)
+                    }
+                  })
+                }}
+                onLastClick={(selected: string) => {
+                  const id = findId(lastCategory, selected)
+                  setReq((state) => ({...req!, eqpmnClId: id.at(0)!.toString()}))
+                }}
+              />
+              <TableTextFieldCell
+                label={"규격"} thWidth={"13%"} onChange={(text) => {
+                setReq((state) => ({...req!, eqpmnStndrd: text}))
+              }}
+              />
+            </TableRow>
+            <TableRow>
+              <TableTextFieldCell
+                label={"요약설명"}
+                thWidth={"13%"} tdSpan={5} multiline onChange={(text) => {
+                setReq((state) => ({...req!, sumry: text}))
+              }}
+              />
+            </TableRow>
+          </Table>
+        </TableContainer>
+      </SubContents>
+
+      <SubContents title={"제원 및 주요 구성품"}>
+        <SimpleTextFiled
+          multiline label={"내용"}
+          defaultLabel={""}
+          onChange={(text) => {
+            setReq((state) => ({...req!, specComposition: text}));
+          }}
+        />
+      </SubContents>
+
+      <SubContents title={"보조기기"}>
+        <SimpleTextFiled
+          label={"내용"}
+          multiline defaultLabel={""}
+          onChange={(text) => {
+            setReq((state) => ({...req!, asstnMhrls: text}));
+          }}
+        />
+      </SubContents>
+
+      <SubContents title={"분야/용도"}>
+        <SimpleTextFiled
+          label={"내용"}
+          multiline defaultLabel={""}
+          onChange={(text) => {
+            setReq((state) => ({...req!, realmPrpos: text}));
+          }}
+        />
+      </SubContents>
+
+      <SubContents title={"이미지"}
+                   required
+                   rightContent={
+                     <CustomButton
+                       label={"등록"} type={"small"} color={"list"}
+                       onClick={() => {
+                         if (imgRef.current) imgRef.current.click()
+                       }}
+                     />
+                   }>
+        <input
+          hidden ref={imgRef}
+          type={"file"}
+          // accept='image/jpg,impge/png,image/jpeg,image/gif'
+          onChange={async (event: any) => {
+            if (event.target.files && event.target.files.length > 0) {
+              setSelectedImage(event.target.files[0])
+              const img = new FormData();
+              img.append("image", event.target.files[0])
+              const response = await EquipmentInformationService.postEquipmentsUploadImage(img)
+
+              if (!response.success) setSelectedImage(null)
+              setReq((state) => ({...req!, imageId: response.value}))
+            }
+          }}
+        />
+        <Stack alignItems={"center"}>
+          {selectedImage && <img src={URL.createObjectURL(selectedImage)} style={{width: "300px", height: "300px"}}/>}
+        </Stack>
+
+      </SubContents>
+      <SubContents title={"상세정보"}>
+        <TableContainer style={{borderTop: "1px solid #d7dae6"}}>
+          <Table>
+            <TableRow>
+              <TableRadioCell
+                row division label={"전원"}
+                radioLabel={["220v", "110v"]}
+                defaultLabel={""}
+                thWidth={"13%"} tdWidth={"21%"}
+                onClick={(selected: string) => {
+                  setReq((state) => ({...req!, srcelct: selected.substring(0, 3)}))
+                }}
+              />
+              <TableRadioCell
+                row division label={"메뉴얼"}
+                radioLabel={["있음", "없음"]}
+                defaultLabel={""}
+                thWidth={"13%"} tdWidth={"21%"}
+                onClick={(selected: string) => {
+                  setReq((state) => ({...req!, mnlAt: selected == "있음"}))
+                }}
+              />
+              <TableRadioCell
+                row label={"소프트웨어"}
+                radioLabel={["있음", "없음"]}
+                defaultLabel={""}
+                thWidth={"13%"}
+                onClick={(selected: string) => {
+                  setReq((state) => ({...req!, swAt: selected == "있음"}))
+                }}
+              />
+            </TableRow>
+
+            <TableRow>
+              <TableTextFieldCell
+                division label={"기존설치장소"} defaultLabel={""}
+                thWidth={"13%"} tdWidth={"21%"} onChange={(text) => {
+                setReq((state) => ({...req!, legacyItlpc: text}))
+              }}
+              />
+              <TableRadioCell
+                row label={"유무료"}
+                radioLabel={["유료", "무료"]}
+                defaultLabel={""}
+                thWidth={"13%"} tdSpan={3}
+                onClick={(selected: string) => {
+                  setReq((state) => ({...req!, pchrgAt: selected == "유료"}))
+                }}
+              />
+            </TableRow>
+
+            <TableRow>
+              <TableTextFieldCell
+                label={"특기사항"} defaultLabel={""}
+                thWidth={"13%"} tdSpan={5} onChange={(text) => {
+                setReq((state) => ({...req!, spcmnt: text}))
+              }}
+              />
+            </TableRow>
+          </Table>
+        </TableContainer>
+      </SubContents>
+      <SubContents
+        title={"할인조건"}
+        rightContent={
+          <Stack flexDirection={"row"}>
+            <CustomButton type={"small"} color={"list"} label={"삭제"} onClick={() => {
+              setDiscountRowList(disCountRowList.filter(f => !selectedDiscount.includes(f.key)))
+            }}/>
+            <HorizontalInterval size={"10px"}/>
+            <CustomButton type={"small"} color={"list"} label={"추가"} onClick={() => {
+              setIsSaleRegister(true)
+            }}/>
+            <HorizontalInterval size={"10px"}/>
+            <CustomButton type={"small"} color={"list"} label={"선택"} onClick={() => {
+              setIsSaleSelect(true)
+            }}/>
+          </Stack>
+        }>
+        <TableComponents<DiscountData>
+          isCheckBox hidePagination hideRowPerPage
+          page={0}
+          rowCount={0}
+          rowsPerPage={0}
+          headCells={headCells}
+          bodyRows={disCountRowList}
+          onSelectedKey={(keys: string[]) => {
+            setSelectedDiscount(keys)
+          }}
+          tableCell={(data) => {
+
+            if (!data) return <></>
+
+            return <Fragment>
+              <TableCell key={"dscntResn-" + data.key} width={'80%'}>{data?.dscntResn}</TableCell>
+              <TableCell key={"dscntRate-" + data.key} width={'15%'}>{data?.dscntRate}</TableCell>
+            </Fragment>
+          }}
+        />
+      </SubContents>
+      <SubContents title={"AS정보"}>
+        <TableContainer style={{borderTop: "1px solid #d7dae6"}}>
+          <Table>
+            <TableRow>
+              <TableTextFieldCell
+                division label={"AS업체명"} defaultLabel={""}
+                thWidth={"13%"} tdWidth={"21%"} onChange={(text) => {
+                setReq((state) => ({...req!, asEntrprsNm: text}))
+              }}
+              />
+              <TableTextFieldCell
+                division label={"AS담당자명"} defaultLabel={""}
+                thWidth={"13%"} tdWidth={"21%"} onChange={(text) => {
+                setReq((state) => ({...req!, asChargerNm: text}))
+              }}
+              />
+              <TableTextFieldCell
+                label={"AS연락처"} defaultLabel={""}
+                thWidth={"13%"} onChange={(text) => {
+                setReq((state) => ({...req!, asChargerCttpc: text}))
+              }}
+              />
+            </TableRow>
+          </Table>
+        </TableContainer>
+      </SubContents>
+      <SubContents title={"구입정보"}>
+        <TableContainer style={{borderTop: "1px solid #d7dae6"}}>
+          <Table>
+            <TableRow>
+              <TableDateCell
+                division label={"구입일자"} defaultTime={""}
+                thWidth={"13%"} tdWidth={"21%"} onChange={(date) => {
+                setReq((state) => ({...req!, purchsDt: date.getTime()}))
+              }}
+              />
+              <TableTextFieldCell
+                division label={"구입처"} defaultLabel={""}
+                thWidth={"13%"} tdWidth={"21%"} onChange={(text) => {
+                setReq((state) => ({...req!, strNm: text}))
+              }}
+              />
+            </TableRow>
+            <TableRow>
+              <TableTextFieldCell
+                division label={"구입가격"}
+                defaultLabel={""}
+                endText={"원"}
+                thWidth={"13%"} tdWidth={"21%"} onChange={(text) => {
+                setReq((state) => ({...req!, purchsPc: Number(text)}))
+              }}
+              />
+              <TableTextFieldCell
+                division label={"제조사(국)"}
+                defaultLabel={""}
+                thWidth={"13%"} tdWidth={"21%"} onChange={(text) => {
+                setReq((state) => ({...req!, makr: text}))
+              }}
+              />
+            </TableRow>
+          </Table>
+        </TableContainer>
+      </SubContents>
+
+    </Stack>
+
+    <Stack flexDirection={"row"} justifyContent={"space-between"} style={{width: "100%", marginTop: "40px"}}>
+      <CustomButton
+        label={"목록"} type={"largeList"} color={"outlined"}
+        onClick={() => {
+          navigate(-1)
+        }}
+      />
+      <Stack flexDirection={"row"}>
+        <CustomButton
+          label={"저장"}
+          onClick={async () => {
+            if (checkValidity('EquipmentRegist')) {
+              if (!req?.imageId) {
+                addModal({open: true, isDist: true, content: '이미지를 등록해주세요.'})
+                return
+              }
+
+              const dataResponse = await EquipmentInformationService.postEquipment({
+                ...req!,
+                dscntId: disCountRowList.map(m => {
+                  return m.dscntId
+                })
+              })
+              if (dataResponse.success) {
+                addModal({
+                  open: true, isDist: true,
+                  content: '등록완료.',
+                  onConfirm: () => {
+                    navigate(-1)
+                  }
+                })
+              }
+            }
+          }}
+        />
+      </Stack>
+    </Stack>
+
+    {
+      isSaleRegister && <SaleRegisterModal
+        open onClose={() => {
+        setIsSaleRegister(false)
+      }}/>
+    }
+    {
+      isSaleSelect && <SaleSelectModal
+        open onSelect={(data: WithCustomRowData<DiscountData>[]) => {
+        setDiscountRowList(data)
+        setIsSaleSelect(false)
+      }}
+        onClose={() => {
+          setIsSaleSelect(false)
+        }}/>
+    }
+  </TitleContents>
+}
+
+const headCells: CustomHeadCell<DiscountData & { number: number }>[] = [
+  {
+    id: 'dscntResn',
+    align: 'center',
+    label: '할인조건',
+  },
+  {
+    id: 'dscntRate',
+    align: "center",
+    label: '할인율(%)',
+  },
+];
+
+export default EquipmentRegist;

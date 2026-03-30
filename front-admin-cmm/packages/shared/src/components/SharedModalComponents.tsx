@@ -1,0 +1,232 @@
+import React, { CSSProperties, useEffect } from 'react';
+import { autocompleteClasses, Button, Modal, Stack, useMediaQuery } from '@mui/material';
+import Box from '@mui/material/Box';
+import { styled } from '@mui/styles';
+import { VerticalInterval } from '../components/LayoutComponents';
+import { Icons } from '../components/IconContainer';
+import { CustomButton } from '../components/ButtonComponents';
+
+type ModalType = 'normal' | 'confirm'| 'save';
+type SnackbarType = 	{ horizontal: 'center' | 'left' | 'right', vertical: 'bottom' | 'top' };
+
+export type ModalParam = {
+  open: boolean;
+  content?: string;
+  type?: ModalType;
+  isDist?: boolean;
+  hideBackdrop?: boolean;
+  title?: string;
+  onConfirm?: () => void;
+  onClose?: () => void;
+  style?: CSSProperties;
+}
+
+export type SnackbarParam = {
+  open: boolean;
+  anchorOrigin:SnackbarType;
+  message: string;
+  type?: ModalType;
+  autoHideDuration?: number;
+  severity?:string;
+  key?: string;
+  onClose?: () => void;
+  style?: CSSProperties;
+}
+
+export const ModalComponents: React.FC<ModalParam> = (props) => {
+    const type = props.type || 'normal';
+    const confirmLabel = type == 'normal' ? '확인' : type == 'save' ? '저장' : '예';
+    const handlerConfirm = (event: React.MouseEvent<HTMLElement>) => {
+      if (props.onConfirm) props.onConfirm();
+    };
+
+    const handlerExit = (event: React.MouseEvent<HTMLElement>) => {
+      if (props.onClose) props.onClose();
+    };
+
+    const handlerModalClose = (
+      event: {},
+      reason: 'backdropClick' | 'escapeKeyDown'
+    ) => {
+      if (props.onClose) props.onClose();
+    };
+
+    useEffect(() => {
+      if (props.open) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'unset';
+      }
+    }, [props.open])
+
+    return (
+      <>
+        <Modal
+          disableScrollLock
+          open={props.open}
+          onClose={handlerModalClose}
+          hideBackdrop={props.hideBackdrop}
+        >
+          <ModalBoxContainer>
+            <Stack justifyContent={'space-between'} flexDirection={'column'} style={props.style}>
+              <Box style={{display: 'flex', justifyContent: 'right'}}>
+                <Button
+                  style={{width: '24px', height: '24px'}}
+                  onClick={handlerExit}
+                >
+                  {<Icons.Exit/>}
+                </Button>
+              </Box>
+
+              <Box sx={{pb: '32px'}}>
+                {props.children ? (
+                  <>
+                    {props.title ? (
+                      <h2>{props.title}</h2>
+                    ) : (
+                      <VerticalInterval size={'40px'}/>
+                    )}
+                    {props.children}
+                  </>
+                ) : (
+                  <>
+                    {props.title ? (
+                      <h2 style={{textAlign: 'center'}}>{props.title}</h2>
+                    ) : (
+                      <VerticalInterval size={'40px'}/>
+                    )}
+                    <p style={{textAlign: 'center'}}>{props.content}</p>
+                  </>
+                )}
+              </Box>
+
+              <Stack justifyContent={'center'} direction={'row'} spacing={'10px'}>
+                {type === 'confirm' && (
+                  <CustomButton
+                    type={'small'}
+                    label={'아니오'}
+                    onClick={handlerExit}
+                  />
+                )}
+                <CustomButton label={confirmLabel} onClick={handlerConfirm}/>
+              </Stack>
+            </Stack>
+          </ModalBoxContainer>
+        </Modal>
+      </>
+    );
+  }
+;
+
+const ModalBoxContainer = styled(Box)({
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  minWidth: '480px',
+  backgroundColor: 'white',
+  borderRadius: '20px',
+  margin: '18px 220px 18px 0',
+  padding: '20px 10px 60px',
+});
+
+export const Modalfront: React.FC<{
+  open: boolean;
+  content: string;
+  type?: ModalType;
+  hideBackdrop?: boolean;
+  title?: string;
+  onConfirm?: () => void;
+  onClose?: () => void;
+  style?: CSSProperties;
+}> = (props) => {
+  const handlerExit = (event: React.MouseEvent<HTMLElement>) => {
+    if (props.onClose) props.onClose();
+  };
+
+  const handlerModalClose = (
+    event: {},
+    reason: 'backdropClick' | 'escapeKeyDown'
+  ) => {
+    if (props.onClose) props.onClose();
+  };
+
+  return (
+    <>
+      <Modal
+        open={props.open}
+        onClose={handlerModalClose}
+        hideBackdrop={props.hideBackdrop}
+      >
+        <ModalFrontBoxContainer>
+          <Stack justifyContent={'space-between'} flexDirection={'column'}>
+            <Box sx={{ pb: '32px' }}>
+              {props.children ? (
+                <>
+                  {props.title ? (
+                    <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <h2 style={{ marginTop: 0 }}>{props.title}</h2>
+                      <Button
+                        style={{ width: '24px', height: '24px' }}
+                        onClick={handlerExit}
+                      >
+                        {<Icons.Exit />}
+                      </Button>
+                    </Box>
+                  ) : (
+                    <VerticalInterval size={'40px'} />
+                  )}
+                  {props.children}
+                </>
+              ) : (
+                <>
+                  {props.title ? (
+                    <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <h2 style={{ marginTop: 0 }}>{props.title}</h2>
+                      <Button
+                        style={{ width: '24px', height: '24px' }}
+                        onClick={handlerExit}
+                      >
+                        {<Icons.Exit />}
+                      </Button>
+                    </Box>
+                  ) : (
+                    <VerticalInterval size={'40px'} />
+                  )}
+                  <p style={{ textAlign: 'center' }}>{props.content}</p>
+                </>
+              )}
+            </Box>
+          </Stack>
+        </ModalFrontBoxContainer>
+      </Modal>
+    </>
+  );
+};
+
+const ModalFrontBoxContainer = styled(Box)({
+  position: 'absolute',
+  left: '50%',
+  top: '50%',
+  transform: 'translate(-50%, -50%)',
+  minWidth: '480px',
+  margin: '18px 220px 18px 0',
+  backgroundColor: 'white',
+  borderRadius: '20px',
+  padding: '30px 30px 30px;',
+  '& .MuiTabPanel-root':{
+    padding: '20px 2px  10px 2px'
+  },
+  '& .Mui-selected': {
+    background: '#000'
+  },
+  '@media (min-width: 320px) and (max-width: 768px)' : {
+    bottom: '0',
+    top: 'auto',
+    transform: 'translateX(-50%)',
+    width: '100%',
+    maxHeight: 'calc(100% - 20px)',
+    margin: '0',
+    borderRadius: '20px 20px 0 0',
+  }
+});

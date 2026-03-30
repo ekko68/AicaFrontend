@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+    <g data-name="그룹 3976">
+        <path data-name="패스 2573" d="M25.913 24.838A9.362 9.362 0 1 0 13.8 33.786v6.884a2.34 2.34 0 0 0 2.34 2.341h.826A2.34 2.34 0 0 0 19.3 40.67v-6.884a9.364 9.364 0 0 0 6.613-8.948z" transform="translate(7.371 -1.492)" style="stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3.5px;fill:none"/>
+        <path data-name="선 13" transform="translate(21.168 35.322)" style="stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3.5px;fill:none" d="M5.507 0H0"/>
+        <path data-name="선 14" transform="translate(23.915 5)" style="stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3.5px;fill:none" d="M0 4.343V0"/>
+        <path data-name="선 15" transform="translate(11 10.387)" style="stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3.5px;fill:none" d="M3.071 3.071 0 0"/>
+        <path data-name="선 16" transform="translate(33.851 10.387)" style="stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3.5px;fill:none" d="M0 3.071 3.071 0"/>
+        <path style="fill:none" d="M0 0h48v48H0z"/>
+    </g>
+</svg>
