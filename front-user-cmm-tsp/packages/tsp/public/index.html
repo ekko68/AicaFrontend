@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="aica"/>
+    <title>실증 지원포털</title>
+
+    <!-- b: NVAER LOGIN -->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+            charset="utf-8"></script>
+    <!-- e: NVAER LOGIN -->
+
+    <!-- b: KAKAO LOGIN -->
+    <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js" charset="utf-8"></script>
+    <!-- e: KAKAO LOGIN -->
+
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
+    <!-- b: KAKAO MAPS -->
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a7fafaac19b61ed153a9e91cb64582d3&libraries=services,clusterer"></script>
+    <!-- e: KAKAO MAPS -->
+    <!-- b: Daum 우편번호 서비스 -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- e: Daum 우편번호 서비스 -->
+    <script id="msie" type="text/html">
+        <main class="msie">
+            원활한 사용을 위해 Edge, Chrome, Safari를 이용해 주세요.
+        </main>
+    </script>
+    <script>
+      // ie일 경우
+      (function () {
+        var agent = navigator.userAgent.toLowerCase();
+        if (
+          (navigator.appName === 'Netscape' &&
+            agent.indexOf('trident') !== -1) ||
+          agent.indexOf('msie') !== -1
+        ) {
+          document.write(document.getElementById('msie').textContent);
+        }
+      })();
+    </script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+</html>

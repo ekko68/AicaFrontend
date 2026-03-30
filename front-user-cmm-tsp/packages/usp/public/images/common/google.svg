@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_2688" data-name="사각형 2688" width="23.529" height="24.009" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="google" transform="translate(-865 -596)">
+    <circle id="타원_174" data-name="타원 174" cx="25" cy="25" r="25" transform="translate(865 596)" fill="#fff"/>
+    <g id="그룹_4107" data-name="그룹 4107" transform="translate(878.236 608.995)">
+      <g id="그룹_4106" data-name="그룹 4106" clip-path="url(#clip-path)">
+        <path id="패스_926" data-name="패스 926" d="M117.673,89.305a13.787,13.787,0,0,0-.218-2.455H106.149v4.644h6.461a5.523,5.523,0,0,1-2.4,3.623v3.012h3.88a11.708,11.708,0,0,0,3.58-8.823" transform="translate(-94.144 -77.028)" fill="#3e82f1" fill-rule="evenodd"/>
+        <path id="패스_927" data-name="패스 927" d="M22.018,136.041a11.461,11.461,0,0,0,7.945-2.908l-3.88-3.012a7.242,7.242,0,0,1-10.782-3.8H11.29v3.11a12,12,0,0,0,10.728,6.613" transform="translate(-10.013 -112.032)" fill="#32a753" fill-rule="evenodd"/>
+        <path id="패스_928" data-name="패스 928" d="M5.288,66.151a7.1,7.1,0,0,1,0-4.562v-3.11H1.277a12.019,12.019,0,0,0,0,10.782Z" transform="translate(0 -51.865)" fill="#f9bb00" fill-rule="evenodd"/>
+        <path id="패스_929" data-name="패스 929" d="M22.018,4.776a6.485,6.485,0,0,1,4.589,1.8L30.05,3.128A11.537,11.537,0,0,0,22.018,0,12,12,0,0,0,11.29,6.614L15.3,9.725a7.154,7.154,0,0,1,6.717-4.949" transform="translate(-10.013 -0.001)" fill="#e74133" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>

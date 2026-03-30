@@ -1,0 +1,438 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Welcome to MagicLine4Web Page</title>
+    <link href="./css/global.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="./images/favicon.ico"	type="image/x-icon" /> -->
+    <!-- 외부 JS -->
+    <script type="text/javascript" src="/MagicLine4Web/ML4Web/js/ext/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="/MagicLine4Web/ML4Web/js/ext/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/MagicLine4Web/ML4Web/js/ext/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="/MagicLine4Web/ML4Web/js/ext/json2.js"></script>
+    <!-- ML4WEB JS -->
+    <script type="text/javascript" src="/MagicLine4Web/ML4Web/js/ext/ML_Config.js"></script>
+</head>
+
+<body>
+    <table id="main-table" border="0" cellspacing="0">
+        <tr>
+            <td id="header" colspan="2">
+                <div id="header-div">
+                    <div class="right-logo">MagicLine4Web Console</div>
+                    <div class="left-logo"><a href="index.jsp" class="header-home">
+                            <img src="./images/1px.gif" width="300px" height="32px" /></a>
+                    </div>
+                    <div class="middle-ad"></div>
+                    <div class="header-links">
+                        <div class="right-links">
+                            <ul>
+                                <li class="middle"><label id="logged-user"> <strong>Signed-in
+                                            as:</strong>&nbsp;admin@ </label></li>
+                                <li class="middle">|</li>
+                                <li class="right"><a href="./document/MagicLine V4.0_Install_Guide.pdf">Install Docs
+                                    </a></li>
+                                <li class="middle">|</li>
+                                <li class="right"><a href="./document/MagicLineV4.0_Function_Guide.pdf">Function Docs
+                                    </a></li>
+                                <li class="middle">|</li>
+                                <li class="middle"><a target="_blank"
+                                        href="./document/MagicLineServerV4.2/index.html">MagicLine Java Docs</a></li>
+                                <li class="middle">|</li>
+                                <li class="middle"><a target="_blank" href="./document/Jcaos_docs/index.html">Jcaos Java
+                                        Docs</a></li>
+                                <li class="middle">|</li>
+                                <li class="left"><a target="_blank" href="http://www.dreamsecurity.com">About</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td id="menu-panel" valign="top">
+                <table id="menu-table" style="border:0;border-spacing:0;">
+                    <tr>
+                        <td id="magicline">
+                            <div id="menu">
+                                <ul class="main">
+                                    <li id="magicline_v40_menu" class="menu-header"
+                                        onclick="mainMenuCollapse(this.childNodes[0])" style="cursor: pointer"><img
+                                            src="./images/up-arrow.gif" class="mMenuHeaders"
+                                            id="magicline_v40_menu" />[Samples]MagicLine4Web
+                                    </li>
+                                    <!-- <li class="normal">
+                                    <ul class="sub">
+                                        <li class="menu-disabled-link" style="background-image: url(../mediation/images/mediation-icon.gif);">로그인</li>
+                                        <li><a href="../ML4WebExample/login_renew.jsp" class="menu-default" style="background-image: url(../sequences/images/sequences.gif);">인증서 로그인</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-disabled-link" style="background-image: url(../mediation/images/mediation-icon.gif);">세션키 암호화 (로그인 후 사용)</li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/sessionEncrypt.jsp" class="menu-default" style="background-image: url(../sequences/images/sequences.gif);">세션키 클라이언트 암호화</a></li>
+                                        <li><a href="../ML4WebExample/sessionEncryptKeyExchange.jsp" class="menu-default" style="background-image: url(../sequences/images/sequences.gif);">세션키 Exchange</a></li>
+                                        <li><a href="../ML4WebExample/sessionSvrEncrypt.jsp" class="menu-default" style="background-image: url(../sequences/images/sequences.gif);">세션키 서버 암호화</a></li>
+                                        <li><a href="../ML4WebExample/sessionEncryptKeyExchangeAjax.jsp" class="menu-default" style="background-image: url(../sequences/images/sequences.gif);">AJAX 암호화</a></li>
+                                    </ul>
+                                </li> -->
+                                    <li class="menu-disabled-link">전자서명</li>
+                                    <li class="normal">
+                                        <ul class="sub">
+                                            <li><a href="./signedForm.html" class="menu-default">Form 전자서명
+                                                </a></li>
+                                            <li><a href="./signedAjax.html" class="menu-default">Ajax 전자서명
+                                                </a></li>
+                                            <!-- <li><a href="../ML4WebExample/addSignedForm.jsp" class="menu-default">AddSign </a></li>
+                                        <li><a href="../ML4WebExample/signedFormXML_single.jsp" class="menu-default">Form XML 전자서명(단건)</a></li>
+                                        <li><a href="../ML4WebExample/signedFormXML_multi.jsp" class="menu-default">Form XML 전자서명(다건)</a></li> -->
+
+                                            <!-- 	<li><a href="../ML4WebExample/signEncrypt.jsp" class="menu-default" style="background-image: url(../endpoints/images/endpoints-icon.gif);">전자서명 & 암호화</a></li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="menu-disabled-link">본인확인 & 전자서명</li>
+                                    <li class="normal">
+                                        <ul class="sub">
+                                            <li><a href="../ML4WebExample/vidClientIDN.html" class="menu-default">서버에서 검증
+                                                    - IDN 입력 </a></li>
+                                            <!-- <li><a href="../ML4WebExample/vidServerIDN.jsp" class="menu-default">서버에서 검증 - 서버 IDN 이용  </a></li> -->
+                                        </ul>
+                                    </li>
+                                    <!-- <li class="menu-disabled-link">구간 암복호화</li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/e2eForm.jsp" class="menu-default">Form 암호화 전송</a></li>
+                                        <li><a href="../ML4WebExample/e2eAjax.jsp" class="menu-default">Ajax 암호화 전송 </a></li>
+                                    </ul>
+                                </li> -->
+                                    <!-- <li class="menu-disabled-link"><span id="wholeMgmt" style="cursor:pointer;" onClick="javscript:magicline.uiapi.getCertManager();">인증서 관리 </span></li>
+                                <li class="menu-disabled-link">인증서이동 클라이언트 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="javascript:CertMoveStart();" class="menu-default">인증서이동 클라이언트 실행</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-disabled-link">모바일 샘플 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebSample/login.jsp?pageID=list" class="menu-default">모바일 샘플 이동</a></li>
+                                    </ul>
+                                </li> -->
+                                    <!-- 
+                                <li class="menu-disabled-link">피노텍 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/finotek_test/signedFormAndSig.jsp" class="menu-default">sig data 생성 / 검증</a></li>
+                                        <li><a href="../ML4WebExample/finotek_test/addSignFormAndSig.jsp" class="menu-default">다중전자서명 sigData</a></li>
+                                        <li><a href="../ML4WebExample/finotek_test/multipleSignedFormAndSig.jsp" class="menu-default">pdf & sig 전자서명 </a></li>
+                                        <li><a href="../ML4WebExample/finotek_test/e2eServerEncrypt.jsp" class="menu-default">e2e 서버 암호화</a></li>
+                                        <li><a href="../ML4WebExample/finotek_test/vidCheck.jsp" class="menu-default">본인확인</a></li>
+                                    </ul>
+                                </li>
+                                 -->
+                                    <!-- <li class="menu-disabled-link">국세청 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/nts_api.jsp" class="menu-default">국세청 테스트페이지</a></li>
+                                    </ul>
+                                </li> -->
+                                    <!-- 
+                                <li class="menu-disabled-link">NP -> 4Web 전환 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/NPto4Web_example.jsp" class="menu-default">샘플페이지</a></li>
+                                    </ul>
+                                </li>
+                                 -->
+                                    <!-- <li class="menu-disabled-link">E2E 적용샘플 </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/signedAjaxWithE2E.jsp" class="menu-default">Ajax 전자서명</a></li>
+                                    </ul>
+                                </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/signedFormWithE2E.jsp" class="menu-default">Form 전자서명</a></li>
+                                    </ul>
+                                </li> -->
+                                    <!-- <li class="menu-disabled-link" style="background-image: url(../mediation/images/mediation-icon.gif);">전자봉투</li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/envelope.jsp" class="menu-default" style="background-image: url(../endpoints/images/endpoints-icon.gif);">전자봉투 </a></li>
+                                        <li><a href="../ML4WebExample/envelopeSigned.jsp" class="menu-default" style="background-image: url(../endpoints/images/endpoints-icon.gif);">전자봉투 & 전자서명</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-disabled-link" style="background-image: url(../mediation/images/mediation-icon.gif);">유틸리티</li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/URIEncode.jsp" class="menu-default" style="background-image: url(../endpoints/images/endpoints-icon.gif);">EncodeURI</a></li>
+                                    </ul>
+                                </li> -->
+                                    <li class="menu-disabled-link">인증서 저장</li>
+                                    <li class="normal">
+                                        <ul class="sub">
+                                            <li><a href="./saveCert.html" class="menu-default">인증서 저장 </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!-- <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="../ML4WebExample/certmove/login.jsp" class="menu-default">모바일 샘플 페이지 </a></li>
+                                    </ul>
+                                </li>
+                                <li class="normal">
+                                    <ul class="sub">
+                                        <li><a href="#" class="menu-default">클라이언트 실행 </a></li>
+                                    </ul>
+                                </li> -->
+
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="./images/1px.gif" width="225px" height="1px" /></td>
+                    </tr>
+                </table>
+            </td>
+            <td id="middle-content">
+                <table id="content-table" style="border:0;border-spacing:0;">
+                    <tr>
+                        <td id="page-header-links">
+                            <table class="page-header-links-table" style="border-spacing:0;">
+                                <tr>
+                                    <td class="breadcrumbs">
+                                        <table class="breadcrumb-table" style="border-spacing:0;">
+                                            <tr>
+                                                <td>
+                                                    <div id="breadcrumb-div"></div>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+
+                                    <td class="page-header-help"><a href="./docs/userguide.html" target="_blank"></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="body"><img src="./images/1px.gif" width="735px" height="1px" />
+                            <script type="text/javascript">
+
+                                //18.07.10
+                                //1. 서명 원문 추가해서 signedFormR 에 서명 원문 데이터 파라미터 추가 
+                                //2. 서명 원문 내용 출력 추가
+
+                                // TODO : 반영할땐 result 출력 없이 해야됨.
+                                var isResultShown = false;
+
+                                function doSignData() {
+
+                                    var signData = $("#signData").val();
+
+                                    if (signData.length < 1) {
+                                        alert('폼 데이터를 입력하세요.');
+                                        $("#signData").focus();
+                                        return;
+                                    }
+
+                                    document.reqForm.signOrigin.value = document.reqForm.signData.value;
+                                    magicline.uiapi.MakeSignData(signData, null, mlCallBack);
+                                }
+
+                                // 서명 결과 데이터를 화면에 출력해주고 전송 버튼을 노출시켜주는 함수
+                                function signResultDrawler(message) {
+
+                                    var htmlStream = "";
+
+                                    if (typeof (message) === "undefiend") {
+                                        alert('No message for signature. \nPlease make sure sign data');
+                                        return;
+                                    }
+
+                                    for (var key in message) {
+                                        /*
+                                        if(typeof message === "object"){
+                                            
+                                            var inMessage = JSON.stringify(message);
+                                            
+                                            for(var inKey in inMessage){
+                                                htmlStream += '<tr>';
+                                                htmlStream += '<td></td>';
+                                                htmlStream += '	<td>' + inKey + '</td>';
+                                                htmlStream += '	<td>' + inMessage[inKey] + '</td>';
+                                                htmlStream += '</tr>';
+                                                    
+                                            }
+                                            
+                                        }else{
+                                        }
+                                        
+                                        */
+
+                                        if (typeof message[key] === "object") {
+                                            htmlStream += '<tr>';
+                                            htmlStream += '	<td colspan="2"><b>' + key + '</b></td>';
+                                            htmlStream += '</tr>';
+                                            for (var inKey in message[key]) {
+                                                htmlStream += "<tr>";
+                                                htmlStream += '	<td>&nbsp;&nbsp;&nbsp;&nbsp;' + inKey + '</td>';
+                                                htmlStream += '	<td>' + message[key][inKey] + '</td>';
+                                                htmlStream += "</tr>";
+
+                                            }
+                                        } else {
+                                            htmlStream += '<tr>';
+                                            htmlStream += '	<td><b>' + key + '</b></td>';
+                                            htmlStream += '	<td>' + message[key] + '</td>';
+                                            htmlStream += '</tr>';
+                                        }
+
+
+                                    }
+
+                                    htmlStream += '<tr>';
+                                    htmlStream += '	<td colspan="2" class="buttonRow" align="center">';
+                                    htmlStream += '		<input type="button" class="button" value="전송" name="Submit" onClick="this.form.submit();">';
+                                    htmlStream += ' </td>';
+                                    htmlStream += '</tr>';
+
+                                    $("#signatureResultArea").html(htmlStream);
+
+                                    if (!isResultShown) {
+                                        isResultShown = true;
+                                        $("#signatureResultDiv").css("display", "");
+                                    }
+                                }
+
+                                function mlCallBack(code, message) {
+
+                                    if (code == 0) {
+
+                                        //message
+                                        //alert(message.selectStorage);
+                                        //alert(message.encMsg);
+                                        document.reqForm.sign.value = encodeURIComponent(message.encMsg);
+                                        document.reqForm.submit();
+                                        //결과값출력
+                                        //signResultDrawler(message);
+
+                                    } else {
+                                        alert("결과값 수신에 실패하였습니다.");
+                                        return;
+                                    }
+                                }
+
+
+                            </script>
+                            <div id="middle">
+                                <h2>MagicLine Digital Signature</h2>
+                                <div id="workArea">
+                                    <!-- DIV START  -->
+
+                                    <table style="width: 100%; height:100%" class="styledLeft">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tr>
+                                            <td>&nbsp;&nbsp;웹 구간 전달 메시지 전체에 대해 클라이언트에서 전자서명을 실행합니다.</td>
+                                        </tr>
+                                    </table>
+
+                                    <p>&nbsp;</p>
+                                    <form id='reqForm' name='reqForm' method='post' action="./signedFormR.jsp">
+                                        <!-- 결과 수신 메시지  -->
+                                        <input type="hidden" id="signOrigin" name="signOrigin" />
+                                        <!-- 180701 서명 원문 폼 추가 -->
+                                        <input type="hidden" id='sign' name='sign' />
+                                        <input type="hidden" id='csCheckType' name='csCheckType' value="1" />
+
+                                        <!-- 전자서명 데이터 입력 영역 -->
+                                        <table style="width: 100%; height:100%" class="styledLeft">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2">Client Digital Signature Information</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="formRow">
+                                                        <table class="normal" cellspacing="0" style="text-align: left;">
+                                                            <tr>
+                                                                <td>전자서명 원문 데이터 입력<font class="required">*</font>
+                                                                </td>
+                                                                <td>
+                                                                    <textarea id="signData" name="signData" rows="3"
+                                                                        cols="60"></textarea>
+                                                                    <!-- <input class="text-box-big" id="signData" name="signData" type="text" value="">-->
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" class="buttonRow" align="center">
+                                                        <input id="aaa" type="button" class="button" value="전자서명"
+                                                            onclick="doSignData();">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <!-- 전자서명 데이터 출력 영역 -->
+                                        <div id="signatureResultDiv" style="display:none;">
+                                            <table style="width: 100%; height:100%" class="styledLeft">
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="2">Signature Data Information</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="signatureResultArea">
+                                                </tbody>
+
+                                            </table>
+
+                                        </div>
+                                    </form>
+                                    <p>&nbsp;</p>
+
+                                </div>
+                            </div><!-- DIV END  -->
+                            <div id="selectCertContainer1" style="width:100%;margin-top:0; display:none;"></div>
+                            <div id="startCs" style="width:100%;margin-top:0; display:none;"></div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td id="footer" colspan="2">
+                <div id="footer-div">
+                    <div class="footer-content">
+                        <div class="copyright">&copy; 2008 - 2011 DreamSecurity Inc. All Rights
+                            Reserved.</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div id="dscertContainer">
+        <iframe id="dscert" name="dscert" src="" scrolling="no" width="100%" height="100%" frameborder="0"
+            allowTransparency="true"
+            style="position:fixed;z-index:100010;top:0px;left:0px;width:100%;height:100%;"></iframe>
+    </div>
+</body>
+
+</html>

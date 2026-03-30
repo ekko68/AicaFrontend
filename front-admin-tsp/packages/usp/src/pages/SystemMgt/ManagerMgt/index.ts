@@ -1,0 +1,5 @@
+export { default } from './ManagerMgt';
+export { default as AdministratorAccountMgt } from './AdministratorAccountMgt';
+export { default as MenuMgt } from './MenuMgt';
+export { default as ProgramMgt } from './ProgramMgt';
+export { default as PermissionMgt } from './PermissionMgt';

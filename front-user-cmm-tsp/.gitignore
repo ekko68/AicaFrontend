@@ -1,0 +1,12 @@
+logs
+*.log
+node_modules
+.DS_Store
+.idea
+npm-debug.log.*
+*.css.d.ts
+*.sass.d.ts
+*.scss.d.ts
+.history
+build
+*.lock

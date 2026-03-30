@@ -1,0 +1,61 @@
+import dayjs from "../libs/dayjs";
+
+export const dayFormat = (dt: number) => {
+  return dayjs(dt).format('YYYY-MM-DD')
+}
+
+export const toTimeFormat = (dt: number, format?: string) => {
+  return dayjs(dt).format(format? format : 'YYYY-MM-DD HH시 mm분')
+}
+
+export const toDayAndTimeFormat = (day: string, time: string) => {
+  const leftPad = (value:number) => {
+    if (value >= 10) return value
+    else return `0${value}`
+  }
+  const h = leftPad(Number(time))
+  //.날짜 형태를 맞춰주기 위함 (YYYYMMHH => YYYY-MM-HH).//
+  if(day.length == 8) {
+    const daySplit = day.slice(0,4) + "-" + day.slice(4,6) + "-" + day.slice(6,8)
+    return `${daySplit} ${h}:00:00`
+  }
+  return `${day}T${h}:00:00`
+}
+
+export const toStringFullDayFormat = (date: Date) => {
+  const leftPad = (value:number) => {
+    if (value >= 10) return value
+    else return `0${value}`
+  }
+  const year = date.getFullYear();
+  const month = leftPad(date.getMonth() +1)
+  const day = leftPad(date.getDate())
+  return [year,month,day].join('-')
+}
+
+export const toStringTimeKoFormat = (time: Date) => {
+  const h = time.getHours()
+  const m = time.getMinutes()
+  return `${h}시 ${m}분`
+}
+
+export const getUseTime = (beginDay: string, beginHour: string) => {
+  const leftPad = (value:number) => {
+    if (value >= 10) return value
+    else return `0${value}`
+  }
+  const startDate = new Date(beginDay);
+  startDate.setHours(Number(beginHour));
+  const date = new Date;
+
+  const diffDate = date.getTime() - startDate.getTime();
+  const dateHours = Math.floor(Math.abs(diffDate / (1000 * 3600 * 24))) * 24;
+
+  const hour = leftPad((dateHours + date.getHours()))
+  const minutes = leftPad(date.getMinutes());
+  return [hour,minutes].join(':')
+}
+
+export const phoneNumberFormat = (data:any) => {
+  return data.toString().replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+}

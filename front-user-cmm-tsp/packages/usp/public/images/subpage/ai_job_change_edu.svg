@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="345" height="800" viewBox="0 0 345 800">
+    <defs>
+        <linearGradient id="t62k3n2dza" x2="1" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#1ccdcc"/>
+            <stop offset=".519" stop-color="#6785f9"/>
+            <stop offset="1" stop-color="#6e58ff"/>
+        </linearGradient>
+    </defs>
+    <g data-name="그룹 462229">
+        <g data-name="그룹 462216">
+            <g data-name="사각형 341049" transform="translate(0 325)" style="stroke:#4063ec;fill:#fff">
+                <rect width="300" height="228" rx="10" style="stroke:none"/>
+                <rect x=".5" y=".5" width="299" height="227" rx="9.5" style="fill:none"/>
+            </g>
+            <text data-name="AI 직무전환교육" transform="translate(30 374)" style="font-family:NotoSansCJKkr-Medium,Noto Sans CJK KR;font-weight:500;font-size:16px;fill:#222;letter-spacing:-.04em"><tspan x="0" y="0">AI 직무전환교육</tspan></text>
+            <g data-name="그룹 462166">
+                <g data-name="구성 요소 111 – 116" transform="translate(30 503)">
+                    <text data-name="평가 · 환류" transform="translate(12)" style="font-size:14px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;fill:#222;letter-spacing:-.04em"><tspan x="0" y="16">평가 · 환류</tspan></text>
+                    <circle data-name="타원 32" cx="2" cy="2" r="2" transform="translate(0 8)" style="fill:#707070"/>
+                </g>
+                <g data-name="구성 요소 111 – 120" transform="translate(30 475)">
+                    <text data-name="기업 AI 인력 · 기술 수요 발굴" transform="translate(12)" style="font-size:14px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;fill:#222;letter-spacing:-.04em"><tspan x="0" y="16">기업 AI 인력 · 기술 수요 발굴</tspan></text>
+                    <circle data-name="타원 32" cx="2" cy="2" r="2" transform="translate(0 8)" style="fill:#707070"/>
+                </g>
+                <g data-name="구성 요소 111 – 119" transform="translate(30 447)">
+                    <text data-name="일자리 발굴" transform="translate(12)" style="font-size:14px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;fill:#222;letter-spacing:-.04em"><tspan x="0" y="16">일자리 발굴</tspan></text>
+                    <circle data-name="타원 32" cx="2" cy="2" r="2" transform="translate(0 8)" style="fill:#707070"/>
+                </g>
+                <g data-name="구성 요소 111 – 118" transform="translate(30 419)">
+                    <text data-name="교육 프로그램 개발" transform="translate(12)" style="font-size:14px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;fill:#222;letter-spacing:-.04em"><tspan x="0" y="16">교육 프로그램 개발</tspan></text>
+                    <circle data-name="타원 32" cx="2" cy="2" r="2" transform="translate(0 8)" style="fill:#707070"/>
+                </g>
+                <g data-name="구성 요소 111 – 117" transform="translate(30 391)">
+                    <text data-name="커리어맵, 직무 설계 가이드 개발" transform="translate(12)" style="font-size:14px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;fill:#222;letter-spacing:-.04em"><tspan x="0" y="16">커리어맵, 직무 설계 가이드 개발</tspan></text>
+                    <circle data-name="타원 32" cx="2" cy="2" r="2" transform="translate(0 8)" style="fill:#707070"/>
+                </g>
+            </g>
+        </g>
+        <g data-name="그룹 462232">
+            <g data-name="사각형 341049" transform="translate(45 572)" style="stroke:#4063ec;fill:#fff">
+                <rect width="300" height="228" rx="10" style="stroke:none"/>
+                <rect x=".5" y=".5" width="299" height="227" rx="9.5" style="fill:none"/>
+            </g>
+            <text data-name="AI 수요 맞춤형 교육" transform="translate(75 621)" style="font-family:NotoSansCJKkr-Medium,Noto Sans CJK KR;font-weight:500;font-size:16px;fill:#222;letter-spacing:-.04em"><tspan x="0" y="0">AI 수요 맞춤형 교육</tspan></text>
+            <g data-name="그룹 462166">
+                <g data-name="구성 요소 111 – 123" transform="translate(75 750)">
+                    <text transform="translate(12)" style="font-size:14px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;fill:#222;letter-spacing:-.04em"><tspan x="0" y="16">확산</tspan></text>
+                    <circle data-name="타원 32" cx="2" cy="2" r="2" transform="translate(0 8)" style="fill:#707070"/>
+                </g>
+                <g data-name="구성 요소 111 – 124" transform="translate(75 722)">
+                    <text data-name="프로젝트 교육" transform="translate(12)" style="font-size:14px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;fill:#222;letter-spacing:-.04em"><tspan x="0" y="16">프로젝트 교육</tspan></text>
+                    <circle data-name="타원 32" cx="2" cy="2" r="2" transform="translate(0 8)" style="fill:#707070"/>
+                </g>
+                <g data-name="구성 요소 111 – 125" transform="translate(75 694)">
+                    <text data-name="기초 · 범용 교육" transform="translate(12)" style="font-size:14px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;fill:#222;letter-spacing:-.04em"><tspan x="0" y="16">기초 · 범용 교육</tspan></text>
+                    <circle data-name="타원 32" cx="2" cy="2" r="2" transform="translate(0 8)" style="fill:#707070"/>
+                </g>
+                <g data-name="구성 요소 111 – 126" transform="translate(75 666)">
+                    <text data-name="개인별 교육 설계" transform="translate(12)" style="font-size:14px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;fill:#222;letter-spacing:-.04em"><tspan x="0" y="16">개인별 교육 설계</tspan></text>
+                    <circle data-name="타원 32" cx="2" cy="2" r="2" transform="translate(0 8)" style="fill:#707070"/>
+                </g>
+                <g data-name="구성 요소 111 – 127" transform="translate(75 638)">
+                    <text data-name="커리어 상담" transform="translate(12)" style="font-size:14px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;fill:#222;letter-spacing:-.04em"><tspan x="0" y="16">커리어 상담</tspan></text>
+                    <circle data-name="타원 32" cx="2" cy="2" r="2" transform="translate(0 8)" style="fill:#707070"/>
+                </g>
+            </g>
+        </g>
+        <g data-name="그룹 462201" transform="translate(-627 -1300)">
+            <g data-name="타원 256" transform="translate(650 1305)" style="stroke-width:2px;stroke-linecap:round;stroke:#c5c7cf;stroke-dasharray:5 7;fill:none">
+                <circle cx="150" cy="150" r="150" style="stroke:none"/>
+                <circle cx="150" cy="150" r="149" style="fill:none"/>
+            </g>
+            <circle data-name="타원 247" cx="70" cy="70" r="70" transform="translate(730 1385)" style="fill:url(#t62k3n2dza)"/>
+            <text data-name="AI 직무전환교육" transform="translate(743 1367)" style="font-size:18px;font-family:NotoSansCJKkr-Medium,Noto Sans CJK KR;font-weight:500;fill:#222;letter-spacing:-.04em"><tspan x="0" y="0">AI 직무전환교육</tspan></text>
+            <g data-name="그룹 462206" transform="translate(664 1521)">
+                <g data-name="타원 245" transform="translate(131 -2)" style="stroke-width:2px;stroke:#4063ec;fill:#fff">
+                    <circle cx="5.5" cy="5.5" r="5.5" style="stroke:none"/>
+                    <circle cx="5.5" cy="5.5" r="4.5" style="fill:none"/>
+                </g>
+                <circle data-name="타원 257" cx="3.5" cy="3.5" r="3.5" transform="translate(133 100.5)" style="fill:#4063ec"/>
+                <path data-name="사각형 341058" transform="translate(136 9)" style="fill:#4063ec" d="M0 0h1v95H0z"/>
+            </g>
+            <g data-name="그룹 462233" transform="translate(864 1450)">
+                <g data-name="타원 245" style="stroke-width:2px;stroke:#4063ec;fill:#fff">
+                    <circle cx="5.5" cy="5.5" r="5.5" style="stroke:none"/>
+                    <circle cx="5.5" cy="5.5" r="4.5" style="fill:none"/>
+                </g>
+                <circle data-name="타원 257" cx="3.5" cy="3.5" r="3.5" transform="translate(92 419)" style="fill:#4063ec"/>
+                <path data-name="사각형 340974" transform="translate(9 5)" style="fill:#4063ec" d="M0 0h87v1H0z"/>
+                <path data-name="사각형 341058" transform="translate(95 6)" style="fill:#4063ec" d="M0 0h1v415H0z"/>
+            </g>
+            <path data-name="패스 843873" d="M5.912 1.35a1.12 1.12 0 0 1 1.656 0l5.04 6.644c.373.491-.088 1.108-.828 1.108H1.7C.96 9.1.5 8.486.872 7.995z" transform="rotate(90 -245.526 1053.735)" style="fill:#c5c7cf"/>
+            <path data-name="패스 843874" d="M5.912 1.35a1.12 1.12 0 0 1 1.656 0l5.04 6.644c.373.491-.088 1.108-.828 1.108H1.7C.96 9.1.5 8.486.872 7.995z" transform="rotate(150 281.856 811.144)" style="fill:#c5c7cf"/>
+            <path data-name="패스 843875" d="M5.912 1.35a1.12 1.12 0 0 1 1.656 0l5.04 6.644c.373.491-.088 1.108-.828 1.108H1.7C.96 9.1.5 8.486.872 7.995z" transform="rotate(-144 711.784 629.724)" style="fill:#c5c7cf"/>
+            <path data-name="패스 843876" d="M5.912 1.35a1.12 1.12 0 0 1 1.656 0l5.04 6.644c.373.491-.088 1.108-.828 1.108H1.7C.96 9.1.5 8.486.872 7.995z" transform="rotate(-45 2211.9 -42.168)" style="fill:#c5c7cf"/>
+            <path data-name="패스 843877" d="M5.912 1.35a1.12 1.12 0 0 1 1.656 0l5.04 6.644c.373.491-.088 1.108-.828 1.108H1.7C.96 9.1.5 8.486.872 7.995z" transform="rotate(32 -2043.073 1855.767)" style="fill:#c5c7cf"/>
+            <path data-name="사각형 341032" style="opacity:.1;fill:none" d="M0 0h64v64H0z" transform="translate(768 1423)"/>
+            <g data-name="그룹 462022" transform="translate(-232.307 -230)">
+                <path data-name="사각형 341002" transform="translate(1031.307 1701)" style="fill:#fff" d="M0 0h3v10H0z"/>
+                <rect data-name="사각형 341052" width="17" height="3" rx="1.5" transform="translate(1024.307 1710)" style="fill:#fff"/>
+                <g data-name="사각형 341051" transform="translate(1002.307 1662)" style="stroke:#fff;stroke-width:3px;fill:none">
+                    <rect width="60" height="42" rx="3" style="stroke:none"/>
+                    <rect x="1.5" y="1.5" width="57" height="39" rx="1.5" style="fill:none"/>
+                </g>
+                <path data-name="패스 843878" d="m1022.185 1675.73-8 8 8 8" transform="translate(3.122 .27)" style="stroke-linejoin:round;stroke:#fff;stroke-width:3px;stroke-linecap:round;fill:none"/>
+                <path data-name="패스 843879" d="m1014.185 1675.73 8 8-8 8" transform="translate(25.121 .27)" style="stroke-linejoin:round;stroke:#fff;stroke-width:3px;stroke-linecap:round;fill:none"/>
+                <path data-name="패스 843880" d="m1034.92 1675.375-3.918 16" transform="translate(-.695 .625)" style="stroke-linejoin:round;stroke:#fff;stroke-width:3px;stroke-linecap:round;fill:none"/>
+            </g>
+        </g>
+    </g>
+</svg>

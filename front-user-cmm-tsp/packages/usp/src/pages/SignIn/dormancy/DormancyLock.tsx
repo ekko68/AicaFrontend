@@ -1,0 +1,125 @@
+import * as styles from '../styles';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useMutation } from 'react-query';
+import { FetchNiceIdPost, FetchNiceIdRes } from '~/fetches/fetchTerms';
+import { useGlobalModalStore, useNiceStore } from '~/pages/store/GlobalModalStore';
+import { useEffect, useRef, useState } from 'react';
+import { Input } from '@mui/material';
+import { fetchAccountUnlocck } from '~/fetches/fetchSignIn';
+import { CustomButton } from '~/components/ButtonComponents';
+
+/*
+  화면: 계정잠김 페이지 개인
+  작성자: Seongeonjoo / navycui
+  작성일: 20220621
+*/
+const _global = (window /* browser */ || global /* node */) as any
+function DormancyLock() {
+  const navigate = useNavigate();
+  const receive:any = useLocation();
+  const formValues:any = useRef(null);
+  const {addModal} = useGlobalModalStore();
+  const {setSesionId,sesionId,joinKey,setJoinKey} = useNiceStore()
+  const [encodeData,setEncodeData] = useState('');
+  const [encodeDataCallback,setEncodeDataCallback] = useState('');
+
+  // 본인인증 서비스 요청
+  const {mutate:niceInit} = useMutation(async () => await FetchNiceIdPost({successUrl:`${process.env.REACT_APP_SUCCESS_NICE_URL}`,failUrl:`${process.env.REACT_APP_FAIL_NICE_URL}`}), {
+    onError: (error:any) => {
+      addModal({
+        type:'normal',
+        open: true,
+        content: error.message
+      })
+    },
+    onSuccess: (data) => {
+      setEncodeData(data.encData);
+    }
+  });
+
+  // 본인인증 서비스 결과 저장
+  const {mutate:niceResSave}:any = useMutation(async () => await FetchNiceIdRes({encodeData: encodeDataCallback,sessionId: sesionId}), {
+    onError: (error:any) => {
+      addModal({
+        type:'normal',
+        open: true,
+        content: error.message
+      })
+      window.location.href = '/';
+    },
+    onSuccess: (data) => {
+      if (!!data.key) {
+          setJoinKey(data.key)
+          AccountUnlocck()
+      }
+    }
+  });
+
+  // 로그인 계정 잠금 해제
+  const {mutate:AccountUnlocck} = useMutation(async () => await fetchAccountUnlocck(joinKey), {
+    onError: (error:any) => {
+      addModal({
+        type:'normal',
+        open: true,
+        content: error.message
+      })
+    },
+    onSuccess: (data) => {
+      navigate('/signup/dormancyLift')
+    }
+  });
+
+  useEffect(() => {
+    niceInit()
+  }, []);
+
+  // 본인인증 서비스 팝업
+  const fnPopup = () => {
+		window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+    formValues.current.action="https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb";
+    formValues.current.target = "popupChk";
+    formValues.current.submit();
+  }
+// 팝업창 콜백
+  _global.setEncodeData = (encodeData:string)=>{
+    if(!!encodeData){
+      setEncodeDataCallback(encodeData)
+      niceResSave()
+    }
+  }
+
+  return (
+    <section css={styles.container}>
+      <div css={styles.content}>
+        <div className="tit">
+          <h1>계정잠김 안내</h1>
+        </div>
+        <Box css={styles.card_Box}>
+          <Box className="icon_errBox">
+            <img src="/images/subpage/icon_wake.png" />
+          </Box>
+          <Box className="confirm_tit mt20">
+            <div><strong>회원</strong> 님</div>
+            <p>계정에서 의심스러운 활동을 감지했으며 보안을 위해 계정을 일시적으로 잠갔습니다.</p>
+            <span className="mintit">휴대폰 본인인증 후 비밀번호 재설정을 수행하셔야 서비스를 이용할 수 있습니다. </span>
+          </Box>
+          <Stack spacing={2} direction="row" justifyContent={'center'} css={styles.signbtn}>
+            <CustomButton label={'취소'} type={'formbtn'} color={'outlinedgdark'} onClick={()=>navigate('/')} />
+            <CustomButton label={'휴대폰 인증'} type={'formbtn'} color={'primary'}  onClick={()=>fnPopup()}/>
+          </Stack>
+        </Box>
+      </div>
+      {/* <!-- 본인인증 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. --> */}
+      <Box component='form' sx={{display:'none'}} name="form_chk" method="post" onSubmit={fnPopup} ref={formValues} style={{ textAlign: 'center'}}>
+        <Input  type="hidden" name="m" value="checkplusService" />  {/* 필수 데이타로, 누락하시면 안됩니다. */}
+        <Input  id="EncodeData" type="hidden" name="EncodeData" value={encodeData} />  {/* 위에서 업체정보를 암호화 한 데이타입니다. */}
+        <Button id="btn-click" variant="contained" type="submit" className="linebtn" sx={{ mt:10 }}></Button>
+      </Box>
+    </section>
+  )
+}
+
+export default DormancyLock;

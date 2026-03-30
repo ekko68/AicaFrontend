@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.blue{
+color: #4063EC;
+}
+.MuiTypography-root{
+font-weight: 700;
+}
+.MuiBreadcrumbs-separator{
+    margin: 0 3px !important;
+}
+.content{
+max-width: 1260px;
+width: 100%;
+margin: 0 auto;
+}
+@media (min-width: 320px) and (max-width: 850px) {
+    .content{
+        max-width: 1260px;
+        width: 100%;
+        margin: 0 15px;
+        padding: 40px 0px;
+    }
+    .benner .content{
+        padding: 48px 15px;
+    }
+}

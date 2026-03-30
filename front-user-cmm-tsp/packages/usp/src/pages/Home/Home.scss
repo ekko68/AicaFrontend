@@ -1,0 +1,92 @@
+@charset "UTF-8";
+@import '../../config/variables';
+@import '../../config/colors';
+@import '../../config/mixin';
+
+@keyframes aniTitIconMove {
+  0% {
+    transform: translateY(-5%);
+  }
+
+  100% {
+    transform: translateY(5%);
+  }
+}
+
+.home {
+  &__swiper-full {
+    &.swiper {
+      &-container {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__header {
+    &:not(.--type-white) {
+      ul {
+        &.menu {
+          > li {
+            > p {
+              color: $white;
+            }
+
+            &:hover {
+              > p {
+                &::after {
+                  background: $white;
+                }
+              }
+            }
+          }
+        }
+
+        &.utility {
+          background: rgba($dim, 0.5);
+
+          > li {
+            a {
+              color: $white;
+            }
+          }
+        }
+
+        &.portal {
+          background: rgba($dim, 0.5);
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 512px,
+            rgba($dim, 0.5) 512px
+          );
+
+          > li {
+            > a {
+              background: rgba($dim, 0.5);
+              color: #ccc;
+
+              &.active {
+                background: transparent;
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+
+      .quieckLink {
+        > a {
+          color: $white;
+
+          &::after {
+            background-image: url('../../../public/images/main/ico_new-window_white.svg');
+          }
+        }
+      }
+    }
+  }
+}
+
+.aniTitIconMove {
+  animation: aniTitIconMove 1s forwards infinite alternate-reverse ease-in-out;
+}
