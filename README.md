@@ -1,33 +1,33 @@
-# AicaFrontend — AICA 플랫폼 프론트엔드 모노레포 그룹
+# AicaFrontend — AICA Platform Frontend Monorepo Group
 
-> AICA 플랫폼의 **전체 프론트엔드 프로젝트 모음**입니다.  
-> 4개의 독립 모노레포로 구성되며, 두 개의 서비스 그룹으로 분류됩니다.
-> 이 저장소는 AICA 플랫폼 내부용 프론트엔드 프로젝트 모음입니다.
+> The **complete collection of frontend projects** for the AICA Platform.  
+> Composed of 4 independent monorepos, organized into two service groups.  
+> ⚠️ This repository is an internal frontend project collection for the AICA Platform.
 
 ---
 
-## 🗂 프로젝트 그룹 구조
+## 🗂 Project Group Structure
 
 ```
 AicaFrontend/
-├── front-user-cmm/         # [그룹 A] 공통 사용자 포털 (TSP + USP)
-├── front-admin-cmm/        # [그룹 A] 공통 관리자 포털 (TSP Admin + USP Admin)
-├── front-user-cmm-tsp/     # [그룹 B] TSP 전용 사용자 포털
-└── front-admin-tsp/        # [그룹 B] TSP 전용 관리자 포털
+├── front-user-cmm/         # [Group A] Common User Portal (TSP + USP)
+├── front-admin-cmm/        # [Group A] Common Admin Portal (TSP Admin + USP Admin)
+├── front-user-cmm-tsp/     # [Group B] TSP-Dedicated User Portal
+└── front-admin-tsp/        # [Group B] TSP-Dedicated Admin Portal
 ```
 
 ---
 
-## 🔵 그룹 A — CMM (Common) 공통 플랫폼
+## 🔵 Group A — CMM (Common) Integrated Platform
 
-> TSP(기술지원포털)와 USP(사용자지원포털) **두 포털을 하나의 모노레포에서 함께 관리**하는 통합 프로젝트입니다.
+> An integrated project that **manages both the TSP (Technology Support Portal) and USP (User Support Portal) within a single monorepo**.
 
 ```
 ┌─────────────────────────────────────────────────┐
-│              그룹 A — CMM 공통 플랫폼             │
+│           Group A — CMM Common Platform          │
 │                                                 │
 │  front-user-cmm          front-admin-cmm        │
-│  (사용자 포털)            (관리자 포털)           │
+│  (User Portal)           (Admin Portal)         │
 │  ┌──────────────┐        ┌──────────────┐       │
 │  │ packages/    │        │ packages/    │       │
 │  │  ├ shared    │        │  ├ shared    │       │
@@ -38,32 +38,32 @@ AicaFrontend/
 └─────────────────────────────────────────────────┘
 ```
 
-| 프로젝트          | 역할                             | 패키지명          | Portal Types               |
-| ----------------- | -------------------------------- | ----------------- | -------------------------- |
-| `front-user-cmm`  | **사용자** 통합 포털 (TSP + USP) | `ai-common-front` | `PORTAL_TSP`, `PORTAL_UAM` |
-| `front-admin-cmm` | **관리자** 통합 포털 (TSP + USP) | `ai-common-admin` | `PORTAL_TAM`, `PORTAL_UAM` |
+| Project             | Role                                    | Package Name      | Portal Types               |
+| ------------------- | --------------------------------------- | ----------------- | -------------------------- |
+| `front-user-cmm`    | **User** integrated portal (TSP + USP)  | `ai-common-front` | `PORTAL_TSP`, `PORTAL_UAM` |
+| `front-admin-cmm`   | **Admin** integrated portal (TSP + USP) | `ai-common-admin` | `PORTAL_TAM`, `PORTAL_UAM` |
 
-### 주요 특징
+### Key Characteristics
 
-- `shared` 패키지를 통해 TSP/USP 간 컴포넌트·유틸·인증 모듈 **공유**
-- 단일 저장소에서 **두 포털(TSP + USP)** 동시 개발·배포 가능
-- `front-user-cmm`은 로컬 개발용 `server` 패키지 포함
-- USP 관리자(front-admin-cmm)는 20개 이상의 풀 기능 관리 페이지 포함  
-  (SystemMgt, EvalSelection, ResidentFacilityMgt, TaskMgt 등)
+- The `shared` package provides **shared** components, utilities, and authentication modules across TSP and USP
+- Both portals (TSP + USP) can be developed and deployed from a **single repository**
+- `front-user-cmm` includes a local development `server` package
+- The USP Admin (`front-admin-cmm`) contains 20+ full-featured management pages  
+  (SystemMgt, EvalSelection, ResidentFacilityMgt, TaskMgt, etc.)
 
 ---
 
-## 🟢 그룹 B — TSP (Technology Support Portal) 전용 플랫폼
+## 🟢 Group B — TSP (Technology Support Portal) Dedicated Platform
 
-> TSP(기술지원포털) **단독 서비스**에 특화된 분리 프로젝트입니다.  
-> CMM 그룹과 동일한 모노레포 구조를 가지되, TSP 기능에 집중합니다.
+> A **standalone project specialized for the TSP** service only.  
+> Shares the same monorepo structure as Group A but focuses exclusively on TSP functionality.
 
 ```
 ┌─────────────────────────────────────────────────┐
-│              그룹 B — TSP 전용 플랫폼             │
+│           Group B — TSP Dedicated Platform       │
 │                                                 │
 │  front-user-cmm-tsp      front-admin-tsp        │
-│  (사용자 포털)            (관리자 포털)           │
+│  (User Portal)           (Admin Portal)         │
 │  ┌──────────────┐        ┌──────────────┐       │
 │  │ packages/    │        │ packages/    │       │
 │  │  ├ shared    │        │  ├ shared    │       │
@@ -74,117 +74,117 @@ AicaFrontend/
 └─────────────────────────────────────────────────┘
 ```
 
-| 프로젝트             | 역할                     | 패키지명          | Portal Types |
-| -------------------- | ------------------------ | ----------------- | ------------ |
-| `front-user-cmm-tsp` | TSP **사용자** 전용 포털 | `ai-common-front` | `PORTAL_TSP` |
-| `front-admin-tsp`    | TSP **관리자** 전용 포털 | `ai-common-admin` | `PORTAL_TAM` |
+| Project              | Role                         | Package Name      | Portal Types |
+| -------------------- | ---------------------------- | ----------------- | ------------ |
+| `front-user-cmm-tsp` | TSP **User** dedicated portal  | `ai-common-front` | `PORTAL_TSP` |
+| `front-admin-tsp`    | TSP **Admin** dedicated portal | `ai-common-admin` | `PORTAL_TAM` |
 
-### 주요 특징
+### Key Characteristics
 
-- TSP 단독 배포 요구사항에 대응하는 **경량화·특화** 버전
-- 사용자 포털: Home / About / Apply / ApplyResource / Info / Mypage / Sign 중심 구성
-- 관리자 포털: Dashboard / EquipmentMgt / Operation / UseMgt 중심 구성
+- A **lightweight, TSP-specialized** version designed for standalone TSP deployment
+- User portal focused on: Home / About / Apply / ApplyResource / Info / Mypage / Sign
+- Admin portal focused on: Dashboard / EquipmentMgt / Operation / UseMgt
 
 ---
 
-## 🔄 그룹 간 관계도
+## 🔄 Group Relationship Diagram
 
 ```
                         AICA Platform
-                            │
-          ┌─────────────────┴─────────────────┐
-          │                                   │
-     [그룹 A] CMM                        [그룹 B] TSP
-  공통(TSP + USP) 플랫폼                TSP 전용 플랫폼
-          │                                   │
-    ┌─────┴─────┐                       ┌─────┴─────┐
-    │           │                       │           │
+                             │
+          ┌──────────────────┴──────────────────┐
+          │                                     │
+     [Group A] CMM                        [Group B] TSP
+  Common (TSP + USP) Platform           TSP-Only Platform
+          │                                     │
+    ┌─────┴─────┐                         ┌─────┴─────┐
+    │           │                         │           │
 front-user-cmm front-admin-cmm  front-user-cmm-tsp front-admin-tsp
-  사용자 포털   관리자 포털          사용자 포털    관리자 포털
-(TSP + USP)  (TSP + USP)          (TSP 전용)   (TSP 전용)
+  User Portal   Admin Portal        User Portal     Admin Portal
+ (TSP + USP)  (TSP + USP)          (TSP only)      (TSP only)
 ```
 
 ---
 
-## 📦 공통 기술 스택
+## 📦 Shared Tech Stack
 
-4개 프로젝트 모두 동일한 기술 기반을 공유합니다.
+All 4 projects share the same technical foundation.
 
-| 분류              | 기술                                            |
-| ----------------- | ----------------------------------------------- |
-| **언어**          | TypeScript                                      |
-| **프레임워크**    | React 17 + CRACO                                |
-| **모노레포**      | Lerna + Yarn Workspaces                         |
-| **UI**            | Material UI v5 + Emotion + SCSS                 |
-| **상태관리**      | Zustand + React Query + SWR                     |
-| **라우팅**        | React Router DOM v6 + Dynamic Router (API 기반) |
-| **HTTP**          | Axios                                           |
-| **인증**          | JWT (`shared/authentication`)                   |
-| **배포**          | Docker + Nginx                                  |
-| **코드 품질**     | ESLint + Prettier                               |
-| **컴포넌트 문서** | Storybook                                       |
+| Category             | Technology                                       |
+| -------------------- | ------------------------------------------------ |
+| **Language**         | TypeScript                                       |
+| **Framework**        | React 17 + CRACO                                 |
+| **Monorepo**         | Lerna + Yarn Workspaces                          |
+| **UI**               | Material UI v5 + Emotion + SCSS                  |
+| **State Management** | Zustand + React Query + SWR                      |
+| **Routing**          | React Router DOM v6 + Dynamic Router (API-based) |
+| **HTTP**             | Axios                                            |
+| **Authentication**   | JWT (`shared/authentication`)                    |
+| **Deployment**       | Docker + Nginx                                   |
+| **Code Quality**     | ESLint + Prettier                                |
+| **Component Docs**   | Storybook                                        |
 
 ---
 
-## 🗺 Dynamic Router 공통 아키텍처
+## 🗺 Shared Dynamic Router Architecture
 
-모든 프로젝트는 **서버 메뉴 API**로부터 라우트를 동적 생성하는 구조를 공유합니다.
+All projects share the same pattern of **dynamically generating routes from the server menu API**.
 
 ```
-서버 API (/member/api/auth/menus/{portalType}/me)
+Server API (/member/api/auth/menus/{portalType}/me)
         │
         ▼
-1차원 메뉴 목록 수신
+Receive flat menu list
         │
         ▼
-계층 구조(트리) 변환
+Transform into hierarchy (tree)
         │
         ▼
-React Router v6 동적 라우트 생성
+Generate React Router v6 dynamic routes
         │
-  ┌─────┴──────────────────────────┐
-  │  middleware(['auth']) 적용      │
-  │  레이아웃 분기 (studio / space) │
-  └─────────────────────────────────┘
+  ┌─────┴──────────────────────────────┐
+  │  middleware(['auth']) applied       │
+  │  Layout branching (studio / space) │
+  └────────────────────────────────────┘
 ```
 
 ---
 
-## 🚀 각 프로젝트 실행 방법 요약
+## 🚀 Quick Start Summary
 
-| 프로젝트             | 설치           | 개발 서버            | 빌드             |
-| -------------------- | -------------- | -------------------- | ---------------- |
-| `front-user-cmm`     | `yarn install` | `yarn tsp start:dev` | `yarn tsp build` |
-| `front-admin-cmm`    | `yarn install` | `yarn tsp start:dev` | `yarn tsp build` |
-| `front-user-cmm-tsp` | `yarn install` | `yarn tsp start:dev` | `yarn tsp build` |
-| `front-admin-tsp`    | `yarn install` | `yarn tsp start:dev` | `yarn tsp build` |
+| Project              | Install          | Dev Server           | Build            |
+| -------------------- | ---------------- | -------------------- | ---------------- |
+| `front-user-cmm`     | `yarn install`   | `yarn tsp start:dev` | `yarn tsp build` |
+| `front-admin-cmm`    | `yarn install`   | `yarn tsp start:dev` | `yarn tsp build` |
+| `front-user-cmm-tsp` | `yarn install`   | `yarn tsp start:dev` | `yarn tsp build` |
+| `front-admin-tsp`    | `yarn install`   | `yarn tsp start:dev` | `yarn tsp build` |
 
-> 개발 서버 실행 전 `/etc/hosts`에 `127.0.0.1 pc.bnet.com` 등록 필요
+> Before starting the dev server, add `127.0.0.1 pc.bnet.com` to `/etc/hosts`.
 
 ---
 
-## 🐳 Docker 배포 요약
+## 🐳 Docker Deployment Summary
 
 ```bash
-# 각 프로젝트 루트에서 실행
+# Run from each project root
 docker build -t <project-name> .
 docker run -p 80:80 <project-name>
 ```
 
-- 빌드 결과물: `packages/tsp/build` → Docker 이미지 `/app/build`
-- Nginx가 80 포트로 정적 파일 서빙
+- Build output: `packages/tsp/build` → copied to `/app/build` inside the Docker image
+- Nginx serves static files on port 80
 
 ---
 
-## 📄 각 프로젝트 상세 문서
+## 📄 Individual Project Documentation
 
-| 프로젝트             | 한국어                                      | 영어                                              |
-| -------------------- | ------------------------------------------- | ------------------------------------------------- |
-| `front-user-cmm`     | [README.md](./front-user-cmm/README.md)     | [README_EN.md](./front-user-cmm/README_EN.md)     |
-| `front-admin-cmm`    | [README.md](./front-admin-cmm/README.md)    | [README_EN.md](./front-admin-cmm/README_EN.md)    |
-| `front-user-cmm-tsp` | [README.md](./front-user-cmm-tsp/README.md) | [README_EN.md](./front-user-cmm-tsp/README_EN.md) |
-| `front-admin-tsp`    | [README.md](./front-admin-tsp/README.md)    | [README_EN.md](./front-admin-tsp/README_EN.md)    |
+| Project              | Korean                                        | English                                             |
+| -------------------- | --------------------------------------------- | --------------------------------------------------- |
+| `front-user-cmm`     | [README.md](./front-user-cmm/README.md)       | [README_EN.md](./front-user-cmm/README_EN.md)       |
+| `front-admin-cmm`    | [README.md](./front-admin-cmm/README.md)      | [README_EN.md](./front-admin-cmm/README_EN.md)      |
+| `front-user-cmm-tsp` | [README.md](./front-user-cmm-tsp/README.md)   | [README_EN.md](./front-user-cmm-tsp/README_EN.md)   |
+| `front-admin-tsp`    | [README.md](./front-admin-tsp/README.md)      | [README_EN.md](./front-admin-tsp/README_EN.md)      |
 
 ---
 
-> 이 저장소는 AICA 플랫폼 내부용 프론트엔드 프로젝트 모음입니다.
+> ⚠️ This repository is an internal frontend project collection for the AICA Platform.
